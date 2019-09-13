@@ -52,8 +52,8 @@ static evmc_result execute(evmc_vm*,
                            evmc_host_context*,
                            enum evmc_revision rev,
                            const evmc_message* msg,
-                           const uint8_t*,
-                           size_t)
+                           const uint8_t* /*unused*/,
+                           size_t /*unused*/)
 {
     // The EIP-1352 (https://eips.ethereum.org/EIPS/eip-1352) defines
     // the range 0 - 0xffff (2 bytes) of addresses reserved for precompiled contracts.

@@ -254,7 +254,7 @@ TEST(cpp, result)
 
         EXPECT_EQ(release_called, 1);
     }
-    EXPECT_EQ(release_called, 1);
+    EXPECT_EQ(release_called, 1);  // NOLINT(clang-analyzer-unix.Malloc)
 }
 
 TEST(cpp, vm)
@@ -405,7 +405,7 @@ TEST(cpp, result_raii)
 {
     static auto release_called = 0;
     release_called = 0;
-    auto release_fn = [](const evmc_result*) noexcept { ++release_called; };
+    auto release_fn = [](const evmc_result* /*unused*/) noexcept { ++release_called; };
 
     {
         auto raw_result = evmc_result{};
@@ -441,7 +441,7 @@ TEST(cpp, result_raii)
 TEST(cpp, result_move)
 {
     static auto release_called = 0;
-    auto release_fn = [](const evmc_result*) noexcept { ++release_called; };
+    auto release_fn = [](const evmc_result* /*unused*/) noexcept { ++release_called; };
 
     release_called = 0;
     {

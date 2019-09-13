@@ -294,7 +294,7 @@ public:
     /// Destructor responsible for automatically releasing attached resources.
     ~result() noexcept
     {
-        if (release)
+        if (release != nullptr)
             release(this);
     }
 
@@ -349,7 +349,7 @@ public:
     /// Destructor responsible for automatically destroying the VM instance.
     ~VM() noexcept
     {
-        if (m_instance)
+        if (m_instance != nullptr)
             m_instance->destroy(m_instance);
     }
 

@@ -65,7 +65,8 @@ public:
                 arguments.emplace_back(std::move(arg));
                 continue;
             }
-            else if (x <= 2)
+
+            if (x <= 2)
             {
                 arg.erase(0, x);
 
@@ -131,7 +132,7 @@ int main(int argc, char* argv[])
         if (ec != EVMC_LOADER_SUCCESS)
         {
             const auto error = evmc_last_error_msg();
-            if (error)
+            if (error != nullptr)
                 std::cerr << error << "\n";
             else
                 std::cerr << "Loading error " << ec << "\n";
